@@ -1,10 +1,9 @@
 module ToDoList
 
-go 1.17
-
-require github.com/gin-gonic/gin v1.7.7
+go 1.14
 
 require (
+	github.com/gin-gonic/gin v1.7.7
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.13.0 // indirect
