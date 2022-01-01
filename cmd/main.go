@@ -27,13 +27,13 @@ func main() {
 		logrus.Fatalf("error loading env variables: %s", err.Error())
 	}
 
-	db, err := repository.NewPostgresDb(repository.Config{
+	db, err := repository.NewPostgresDB(repository.Config{
 		Host:     viper.GetString("db.host"),
 		Port:     viper.GetString("db.port"),
 		Username: viper.GetString("db.username"),
-		Password: viper.GetString("db.password"),
 		DBName:   viper.GetString("db.dbname"),
-		SSLMode:  os.Getenv("DB_PASSWORD"),
+		SSLMode:  viper.GetString("db.sslmode"),
+		Password: os.Getenv("DB_PASSWORD"),
 	})
 
 	if err != nil {
@@ -72,7 +72,7 @@ func main() {
 
 func InitConfig() error {
 	viper.AddConfigPath("configs")
-	viper.SetConfigName("configs")
+	viper.SetConfigName("config")
 	return viper.ReadInConfig()
 
 }
